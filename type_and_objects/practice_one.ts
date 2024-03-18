@@ -1,9 +1,3 @@
-enum CurrencyType {
-  USD = "US_DOLLAR",
-  EUR = "EURO",
-  GBP = "BRITISH",
-}
-
 type Product = {
   id: number;
   name: string;
@@ -13,7 +7,7 @@ type Product = {
 };
 
 type Customer = {
-  customerId: number;
+  customerid: number;
   name: string;
   email: string;
   printDetails(): void;
@@ -23,34 +17,42 @@ const book: Product = {
   id: 1,
   name: "The Great Gatsby",
   price: 15.99,
-  description: "A classic novel by F.Scott Fitzgerald",
+  description: "A classic novel by F. Scott Fitzgerald",
   printDetails() {
     console.log(`
-       Book ID: ${book.id}
-       Book Name: ${book.name} 
-       Price: ${book.price} ${CurrencyType.EUR} 
-       Description: ${book.description} `);
+      BOOK ID: ${book.id}
+      BOOK NAME: ${book.name}
+      BOOK PRICE: ${book.price} ${Currency.EUR}
+      BOOK DESCRIPTION: ${book.description}
+    `);
   },
 };
 
 const johnDoe: Customer = {
-  customerId: 123,
+  customerid: 123,
   name: "John Doe",
-  email: "john_doe@example.com",
+  email: "john.doe@example.com",
   printDetails() {
     console.log(`
-       Customer Id: ${johnDoe.customerId} 
-       Customer Name: ${johnDoe.name} 
-       Customer Email: ${johnDoe.email} 
-       Currency: ${CurrencyType.USD}`);
+      CUSTOMER ID: ${johnDoe.customerid}
+      CUSTOMER NAME: ${johnDoe.name}
+      CUSTOMER EMAIL: ${johnDoe.email}
+      CUSTOMER CURRENCY: ${Currency.PHP}
+    `);
   },
 };
 
-type Catcher = Product | Customer;
-
-function printDetails(catcher: Catcher): void {
-  catcher.printDetails();
+enum Currency {
+  USD = "DSA",
+  EUR = "EURO",
+  PHP = "PESO",
 }
 
-printDetails(book);
-printDetails(johnDoe);
+type entity = Product | Customer;
+
+function displayInfo(Catcher: entity) {
+  Catcher.printDetails();
+}
+
+displayInfo(book);
+displayInfo(johnDoe);
