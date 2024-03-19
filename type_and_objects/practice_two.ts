@@ -8,7 +8,7 @@ type Animal = {
   species: string;
   name: string;
   age: number;
-  makeSound(): void;
+  displayDetails(): void;
 };
 
 type Habitat = {
@@ -22,8 +22,9 @@ const lion: Animal = {
   species: "Lion",
   name: "Simba",
   age: 5,
-  makeSound() {
-    console.log(`ROAR LIONS DIET ${Diet.CARNIVORE}`);
+  displayDetails() {
+    console.log(`
+          ROAR LIONS DIET ${Diet.CARNIVORE}`);
   },
 };
 
@@ -43,8 +44,7 @@ const jungle: Habitat = {
 type ZooItem = Animal | Habitat;
 
 function interactWithHabitat(zooitem: ZooItem): void {
-  lion.makeSound();
-  jungle.displayDetails();
+  zooitem.displayDetails();
 }
 
 interactWithHabitat(lion);

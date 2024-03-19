@@ -8,7 +8,7 @@ var lion = {
     species: "Lion",
     name: "Simba",
     age: 5,
-    makeSound: function () {
+    displayDetails: function () {
         console.log("ROAR LIONS DIET ".concat(Diet.CARNIVORE));
     },
 };
@@ -21,8 +21,7 @@ var jungle = {
     },
 };
 function interactWithHabitat(zooitem) {
-    lion.makeSound();
-    jungle.displayDetails();
+    zooitem.displayDetails();
 }
 interactWithHabitat(lion);
 interactWithHabitat(jungle);
