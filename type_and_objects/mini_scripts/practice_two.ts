@@ -43,9 +43,9 @@ const jungle: Habitat = {
 
 type Catcher = Animal | Habitat;
 
-function interactWithHabitat(catcher: Catcher, catcher1: Catcher) {
+function interactWithHabitat(catcher: Catcher) {
   catcher.displayDetails();
-  catcher1.displayDetails();
 }
 
-interactWithHabitat(lion, jungle);
+interactWithHabitat(lion);
+interactWithHabitat(jungle);
