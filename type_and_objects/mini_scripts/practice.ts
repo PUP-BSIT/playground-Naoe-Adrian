@@ -14,7 +14,7 @@ interface Course {
 
 const student1: Student = {
   id: "ICT-1206",
-  name: "Bini Colet",
+  name: "Bini",
   age: 18,
   grade: "12th",
 };

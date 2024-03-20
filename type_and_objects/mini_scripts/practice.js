@@ -1,6 +1,6 @@
 var student1 = {
     id: "ICT-1206",
-    name: "Bini Colet",
+    name: "Bini",
     age: 18,
     grade: "12th",
 };
