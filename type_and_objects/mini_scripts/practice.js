@@ -1,26 +1,34 @@
-var DistanceUnit;
-(function (DistanceUnit) {
-    DistanceUnit["KILOMETER"] = "km";
-    DistanceUnit["MILE"] = "m";
-})(DistanceUnit || (DistanceUnit = {}));
-var myCar = {
-    plate_no: "NBA 1234",
-    owner_name: "Adrian Naoe",
-    speed: 50,
-    printSpeed: function () {
-        console.log("The current speed of ".concat(this.plate_no, " is ").concat(this.speed, " ").concat(DistanceUnit.MILE));
-    },
+var student1 = {
+    id: "ICT-1206",
+    name: "Bini Colet",
+    age: 18,
+    grade: "12th",
 };
-var aNaoe = {
-    full_name: "Adrian Bico naoe",
-    birthday: new Date("2003-24-25"),
-    speed: 6.5,
-    printSpeed: function () {
-        console.log("The current speed of ".concat(this.full_name, " is ").concat(this.speed, " ").concat(DistanceUnit.KILOMETER));
-    },
+var mathCourse = {
+    code: "MATH101",
+    name: "Introduction to Calculus",
+    credits: 4,
+    students: [],
 };
-function speedTest(contestant) {
-    contestant.printSpeed();
+function enrollStudent(student, course) {
+    course.students.push(student);
 }
-speedTest(myCar);
-speedTest(aNaoe);
+function printCourseDetails(course, printStudent) {
+    console.log("Course Code: ".concat(course.code, " | Course Name: ").concat(course.name, " | Credits: ").concat(course.credits));
+    console.log("Students Enrolled:");
+    course.students.forEach(function (student) {
+        printStudent(student);
+    });
+}
+var student2 = {
+    id: "ICT-1206",
+    name: "Adrian Naoe",
+    age: 19,
+    grade: "12th",
+};
+enrollStudent(student1, mathCourse);
+enrollStudent(student2, mathCourse);
+function printStudentDetails(student) {
+    console.log("- Name: ".concat(student.name, " | Grade: ").concat(student.grade));
+}
+printCourseDetails(mathCourse, printStudentDetails);
