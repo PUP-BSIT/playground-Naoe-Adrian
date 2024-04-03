@@ -8,7 +8,7 @@ var myCar = {
     owner_name: "John Doe",
     speed: 50,
     printSpeed: function () {
-        console.log("\n      THE CURRENT SPEED OF ".concat(myCar.plate_no, "\n      IS ").concat(myCar.speed, " ").concat(DistanceUnit.KILOMETER, "\n    "));
+        console.log("\n      THE CURRENT SPEED OF ".concat(myCar.plate_no, "\n      IS: ").concat(myCar.speed, " ").concat(DistanceUnit.KILOMETER, "\n    "));
     },
 };
 var janeDee = {
@@ -16,7 +16,7 @@ var janeDee = {
     birthday: new Date("2002-03-25"),
     speed: 6.5,
     printSpeed: function () {
-        console.log("\n      THE CURRENT SPEED OF ".concat(janeDee.full_name, "\n      IS ").concat(janeDee.speed, " ").concat(DistanceUnit.MILE, "\n    "));
+        console.log("\n      THE CURRENT SPEED OF ".concat(janeDee.full_name, "\n      IS: ").concat(janeDee.speed, " ").concat(DistanceUnit.MILE, "\n    "));
     },
 };
 function speedTest(contestant) {
