@@ -23,4 +23,27 @@ jobs:
 
       - name: Run Tests
         run: npm run test:ci
-    
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Checkout to Repo
+        uses: actions/checkout@main
+      - name: Setup Node
+        uses: actions/setup-node@main
+        with:
+          node-version: "20.x"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Build
+        run: npm run build
+
+      - name: Archive Production Artifacts
+        uses: actions/upload-artifact@main
+        with:
+          name: public
+          path: ./public
