@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [angular-testing]
+    branches: [main]
 
 jobs:
   test:
@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Checkout to Repo
         uses: actions/checkout@main
-
       - name: Setup Node
         uses: actions/setup-node@main
         with:
@@ -47,3 +46,33 @@ jobs:
         with:
           name: public
           path: ./public
+
+  deploy:
+    name: Deploy to Firebase
+    runs-on: ubuntu-latest
+    # only run if build job complte successfully
+    needs: [build]
+    steps:
+      # building the app before deploy
+      - name: Checkout to Repo
+        uses: actions/checkout@main
+
+      - name: Setup Node
+        uses: actions/setup-node@main
+        with:
+          node-version: "20.x"
+
+      # Install the dependencies need to build the app
+      - name: Install Dependencies
+        run: npm install
+      # build the app
+      - name: Build the app artifact for prod
+        run: npm run build
+
+      # ddeploy the app artifact to firebase
+      - name: Deploy angular app to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }} 
