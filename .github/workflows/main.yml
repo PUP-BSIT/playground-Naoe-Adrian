@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [angular-testing]
 
 jobs:
   test:
@@ -67,7 +67,7 @@ jobs:
         run: npm install
       # build the app
       - name: Build the app artifact for prod
-        run: npm run build
+        run: npm run build --prod
 
       # ddeploy the app artifact to firebase
       - name: Deploy angular app to Firebase
@@ -75,4 +75,4 @@ jobs:
         with:
           args: deploy --only hosting
         env:
-          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }} 
+          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
