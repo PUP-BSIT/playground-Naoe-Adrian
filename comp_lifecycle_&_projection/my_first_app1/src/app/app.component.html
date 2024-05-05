@@ -1,0 +1,34 @@
+<app-parent></app-parent>
+<input #myInput />
+<button (click)="logInputValue()">
+  Log
+</button>
+
+<app-alert>Hello</app-alert>
+<app-alert alertType="primary">Hello</app-alert>
+<app-alert alertType="secondary">Hello</app-alert>
+<app-alert alertType="warn">Hello</app-alert>
+
+<app-field mode="display">
+  <ng-container class="display-mode">
+    <div>Title: {{ title }}</div>
+  </ng-container>
+  <ng-container class="edit-mode">
+    <label>Title: </label>
+    <input [value]="title" />
+  </ng-container>
+</app-field>
+
+<button (click)="pVal = pVal + 1">
+  Step
+</button>
+<app-my-component [myValue]="pVal">
+</app-my-component>
+
+
+<button (click)="pVal = pVal + 1">Step</button>
+<button (click)="student.given_name = 'Steven'">
+  Change Given Name
+</button>
+<app-my-component [myValue]="pVal" [student]="student">
+</app-my-component>
